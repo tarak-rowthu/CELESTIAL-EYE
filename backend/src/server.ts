@@ -22,23 +22,53 @@ dotenv.config();
 
 const app = express();
 
-// Security & parsing middleware
+// Security
 app.use(helmet());
-app.use(cors({
-  origin: process.env.FRONTEND_ORIGIN || 'http://localhost:3000',
-  credentials: true,
-}));
+
+// CORS Configuration
+const allowedOrigins = [
+  'http://localhost:3000',
+  'http://localhost:3001',
+];
+
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      // Allow requests with no origin (Postman, mobile apps, etc.)
+      if (!origin) return callback(null, true);
+
+      if (allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      }
+
+      return callback(new Error(`CORS Error: Origin ${origin} is not allowed`));
+    },
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+  })
+);
+
+// Handle preflight requests
+app.options('*', cors());
+
+// Middleware
 app.use(compression() as any);
 app.use(json());
 app.use(urlencoded({ extended: true }));
 
-// Apply rate limiter to all routes
+// Rate Limiter
 app.use(apiRateLimiter);
 
-// Health check
-app.get('/health', (_req, res) => res.json({ status: 'ok' }));
+// Health Check
+app.get('/health', (_req, res) => {
+  res.json({
+    status: 'ok',
+    message: 'Celestial Eye Backend Running',
+  });
+});
 
-// Public routes
+// API Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/locations', locationRoutes);
 app.use('/api/iss', issRoutes);
@@ -47,15 +77,15 @@ app.use('/api/planets', planetRoutes);
 app.use('/api/constellations', constellationRoutes);
 app.use('/api/predictor', predictorRoutes);
 app.use('/api/object', objectRoutes);
-
-// Protected routes (JWT required)
 app.use('/api/favorites', favoritesRoutes);
 app.use('/api/history', historyRoutes);
 
-// Global error handler (must be last)
+// Error Handler
 app.use(errorHandler);
 
-const PORT = parseInt(process.env.PORT || '4000', 10);
+// Start Server
+const PORT = Number(process.env.PORT) || 4000;
+
 app.listen(PORT, () => {
   console.log(`🚀 Celestial Eye Backend running on http://localhost:${PORT}`);
 });

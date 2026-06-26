@@ -8,50 +8,56 @@ datasource db {
 }
 
 model User {
-  id               String             @id @default(uuid())
-  name             String
-  email            String             @unique
-  passwordHash     String
-  role             String             @default("USER")
-  favorites        FavoriteLocation[]
-  searchHistories  SearchHistory[]
-  favoriteObjects  FavoriteObject[]
-  createdAt        DateTime           @default(now())
-  updatedAt        DateTime           @updatedAt
+  id              String             @id @default(uuid())
+  name            String
+  email           String             @unique
+  passwordHash    String
+  role            String             @default("USER")
+  createdAt       DateTime           @default(now())
+  updatedAt       DateTime           @updatedAt
+  favorites       FavoriteLocation[]
+  favoriteObjects FavoriteObject[]
+  searchHistories SearchHistory[]
 }
 
 model FavoriteLocation {
   id        String   @id @default(uuid())
-  user      User     @relation(fields: [userId], references: [id])
   userId    String
   label     String
   latitude  Float
   longitude Float
   createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id])
+
+  @@index([userId], map: "FavoriteLocation_userId_fkey")
 }
 
 model SearchHistory {
   id         String   @id @default(uuid())
-  user       User     @relation(fields: [userId], references: [id])
   userId     String
   query      String
   latitude   Float
   longitude  Float
   searchedAt DateTime @default(now())
+  user       User     @relation(fields: [userId], references: [id])
+
+  @@index([userId], map: "SearchHistory_userId_fkey")
 }
 
 model FavoriteObject {
   id         String   @id @default(uuid())
-  user       User     @relation(fields: [userId], references: [id])
   userId     String
-  objectId   String   // e.g., "sat_123" or "planet_Mars"
-  objectType String   // "SATELLITE", "PLANET", "STAR"
+  objectId   String
+  objectType String
   createdAt  DateTime @default(now())
+  user       User     @relation(fields: [userId], references: [id])
+
+  @@index([userId], map: "FavoriteObject_userId_fkey")
 }
 
 model CelestialObject {
   id          String  @id @default(uuid())
   name        String
-  type        String  // STAR, PLANET, SATELLITE, etc.
+  type        String
   description String? @db.Text
 }
