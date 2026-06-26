@@ -1,4 +1,4 @@
-﻿import express from 'express';
+import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
 import compression from 'compression';
@@ -26,10 +26,7 @@ const app = express();
 app.use(helmet());
 
 // CORS Configuration
-const allowedOrigins = [
-  'http://localhost:3000',
-  'http://localhost:3001',
-];
+const allowedOrigins = (process.env.FRONTEND_ORIGIN?.split(',') ?? ['http://localhost:3000', 'http://localhost:5173']);
 
 app.use(
   cors({
@@ -86,8 +83,8 @@ app.use(errorHandler);
 // Start Server
 const PORT = Number(process.env.PORT) || 4000;
 
-app.listen(PORT, () => {
-  console.log(`🚀 Celestial Eye Backend running on http://localhost:${PORT}`);
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`🚀 Celestial Eye Backend running on http://0.0.0.0:${PORT}`);
 });
 
 export default app;
