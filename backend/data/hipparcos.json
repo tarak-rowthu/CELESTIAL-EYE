@@ -1,0 +1,12 @@
+[
+  { "id": "1", "name": "Sirius", "ra": 101.287, "dec": -16.716, "mag": -1.46, "constellation": "CMA", "description": "The brightest star in the night sky." },
+  { "id": "2", "name": "Canopus", "ra": 95.987, "dec": -52.695, "mag": -0.74, "constellation": "CAR", "description": "The second-brightest star in the night sky." },
+  { "id": "3", "name": "Alpha Centauri", "ra": 219.902, "dec": -60.833, "mag": -0.27, "constellation": "CEN", "description": "The closest star system to the Solar System." },
+  { "id": "4", "name": "Arcturus", "ra": 213.915, "dec": 19.182, "mag": -0.05, "constellation": "BOO", "description": "A red giant star in the northern hemisphere." },
+  { "id": "5", "name": "Vega", "ra": 279.234, "dec": 38.783, "mag": 0.03, "constellation": "LYR", "description": "The brightest star in the constellation Lyra." },
+  { "id": "6", "name": "Capella", "ra": 79.172, "dec": 45.997, "mag": 0.08, "constellation": "AUR", "description": "A quadruple star system in Auriga." },
+  { "id": "7", "name": "Rigel", "ra": 78.634, "dec": -8.201, "mag": 0.13, "constellation": "ORI", "description": "A blue supergiant star in Orion." },
+  { "id": "8", "name": "Procyon", "ra": 114.825, "dec": 5.224, "mag": 0.34, "constellation": "CMI", "description": "A white main-sequence star in Canis Minor." },
+  { "id": "9", "name": "Betelgeuse", "ra": 88.792, "dec": 7.407, "mag": 0.50, "constellation": "ORI", "description": "A red supergiant candidate supernova." },
+  { "id": "10", "name": "Altair", "ra": 297.695, "dec": 8.868, "mag": 0.77, "constellation": "AQL", "description": "The brightest star in Aquila." }
+]

@@ -1,0 +1,57 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id               String             @id @default(uuid())
+  name             String
+  email            String             @unique
+  passwordHash     String
+  role             String             @default("USER")
+  favorites        FavoriteLocation[]
+  searchHistories  SearchHistory[]
+  favoriteObjects  FavoriteObject[]
+  createdAt        DateTime           @default(now())
+  updatedAt        DateTime           @updatedAt
+}
+
+model FavoriteLocation {
+  id        String   @id @default(uuid())
+  user      User     @relation(fields: [userId], references: [id])
+  userId    String
+  label     String
+  latitude  Float
+  longitude Float
+  createdAt DateTime @default(now())
+}
+
+model SearchHistory {
+  id         String   @id @default(uuid())
+  user       User     @relation(fields: [userId], references: [id])
+  userId     String
+  query      String
+  latitude   Float
+  longitude  Float
+  searchedAt DateTime @default(now())
+}
+
+model FavoriteObject {
+  id         String   @id @default(uuid())
+  user       User     @relation(fields: [userId], references: [id])
+  userId     String
+  objectId   String   // e.g., "sat_123" or "planet_Mars"
+  objectType String   // "SATELLITE", "PLANET", "STAR"
+  createdAt  DateTime @default(now())
+}
+
+model CelestialObject {
+  id          String  @id @default(uuid())
+  name        String
+  type        String  // STAR, PLANET, SATELLITE, etc.
+  description String? @db.Text
+}
