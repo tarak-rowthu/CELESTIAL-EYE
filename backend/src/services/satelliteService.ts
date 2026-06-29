@@ -106,8 +106,14 @@ export async function fetchActiveSatellites(): Promise<Satellite[]> {
  */
 export async function getSatelliteById(id: string): Promise<Satellite | null> {
   try {
-    const localPath = path.resolve(__dirname, '../../data/active_satellites.tle');
-    const tleData = fs.readFileSync(localPath, 'utf8');
+    let tleData = '';
+    try {
+      const localPath = path.resolve(__dirname, '../../data/active_satellites.tle');
+      tleData = fs.readFileSync(localPath, 'utf8');
+    } catch (fsErr: any) {
+      console.warn(`[getSatelliteById] Local TLE file missing or unreadable: ${fsErr.message}`);
+      throw new Error(`TLE file read failed: ${fsErr.message}`);
+    }
     const lines = tleData.split('\n').map(l => l.trim()).filter((l) => l !== '');
     
     const now = new Date();
@@ -187,8 +193,9 @@ export async function getSatelliteById(id: string): Promise<Satellite | null> {
         };
       }
     }
-  } catch (err) {
-    console.error('Failed to get satellite details with orbit points:', err);
+  } catch (err: any) {
+    console.error(`[getSatelliteById] Failed to calculate high-fidelity orbit points for ${id}:`, err);
+    throw new Error(`Failed to calculate orbit points: ${err.message}`);
   }
   
   const all = await fetchActiveSatellites();

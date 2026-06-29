@@ -35,20 +35,25 @@ let cachedStars: Star[] | null = null;
  */
 export function loadStars(): Star[] {
   if (cachedStars) return cachedStars;
-  const filePath = path.resolve(__dirname, '../../data/hipparcos.json');
-  const raw = fs.readFileSync(filePath, 'utf-8');
-  const data = JSON.parse(raw) as any[];
-  cachedStars = data.map((item) => ({
-    id: item.id,
-    name: item.name,
-    type: 'star',
-    ra: item.ra,
-    dec: item.dec,
-    mag: item.mag,
-    constellation: item.constellation,
-    description: item.description ?? '',
-  } as unknown as Star));
-  return cachedStars;
+  try {
+    const filePath = path.resolve(__dirname, '../../data/hipparcos.json');
+    const raw = fs.readFileSync(filePath, 'utf-8');
+    const data = JSON.parse(raw) as any[];
+    cachedStars = data.map((item) => ({
+      id: item.id,
+      name: item.name,
+      type: 'star',
+      ra: item.ra,
+      dec: item.dec,
+      mag: item.mag,
+      constellation: item.constellation,
+      description: item.description ?? '',
+    } as unknown as Star));
+    return cachedStars;
+  } catch (err: any) {
+    console.error(`[starService] Failed to load star catalog: ${err.message}`);
+    throw new Error(`Failed to load star catalog: ${err.message}`);
+  }
 }
 
 /**

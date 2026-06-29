@@ -1,7 +1,7 @@
 
 <div align="center">
 
-# 🔭 Project Zenith: The Celestial Eye
+# 🔭 PROJECT ZENITH
 
 <img src="https://img.shields.io/badge/Next.js-15.0-black?style=for-the-badge&logo=next.js&logoColor=white" />
 <img src="https://img.shields.io/badge/React-19.0-61DAFB?style=for-the-badge&logo=react&logoColor=black" />
@@ -31,7 +31,7 @@
 
 Amateur astronomers and space enthusiasts lack a unified, scientifically rigorous platform that combines real-time satellite telemetry, accurate planetary ephemeris data, constellation detection, and localized stargazing predictions in a single intuitive interface.
 
-**The Celestial Eye** solves this by integrating live SGP4-propagated orbital data, Keplerian geocentric coordinate calculations, Hipparcos star catalog constellation detection, and Open-Meteo weather quality scoring — delivering a production-grade astronomical observatory in the browser.
+**PROJECT ZENITH** solves this by integrating live SGP4-propagated orbital data, Keplerian geocentric coordinate calculations, Hipparcos star catalog constellation detection, and Open-Meteo weather quality scoring — delivering a production-grade astronomical observatory in the browser.
 
 ---
 
@@ -808,7 +808,7 @@ SOFTWARE.
 
 **Tarak Naga Venkata Durgesh Rowthu**
 
-*Project Zenith: The Celestial Eye*
+*PROJECT ZENITH*
 
 [![GitHub](https://img.shields.io/badge/GitHub-@your--username-181717?style=flat-square&logo=github)](https://github.com/your-username)
 
@@ -839,6 +839,6 @@ SOFTWARE.
 
 **Built with 🔭 and precision engineering**
 
-*Project Zenith: The Celestial Eye — Where science meets the stars*
+*PROJECT ZENITH — Where science meets the stars*
 
 </div>

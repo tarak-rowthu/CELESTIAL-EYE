@@ -57,8 +57,9 @@ export async function getPlanetaryPositions(lat?: number, lon?: number): Promise
           transitTime,
           visible: alt > 0,
         };
-      } catch (err) {
-        console.error(`Failed planet calculation for ${planet.id}:`, err);
+      } catch (err: any) {
+        console.error(`[nasaService] Failed planet calculation for ${planet.id}:`, err);
+        throw new Error(`Failed planet calculation for ${planet.id}: ${err.message}`);
       }
     }
     return planet;

@@ -141,7 +141,8 @@ export async function predictNext24h(
       const line2 = lines[i + 2];
       
       const isISS = name.includes('ISS (ZARYA)');
-      const satId = isISS ? '25544' : (line1.split(/\s+/)[1] || `sat_${i}`);
+      const rawSatId = line1.split(/\s+/)[1] || `sat_${i}`;
+      const satId = isISS ? '25544' : rawSatId.replace(/\D/g, '');
 
       const satPasses = calculateSatellitePasses(name, satId, line1, line2, latitude, longitude, date);
       satPasses.forEach((pass) => {

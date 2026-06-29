@@ -36,7 +36,7 @@ export default function Navbar() {
             <Eye className="w-5 h-5 text-white group-hover:scale-110 transition-transform" />
           </div>
           <span className="font-bold tracking-wider bg-clip-text text-transparent bg-gradient-to-r from-white to-zinc-400 group-hover:text-white transition-colors">
-            CELESTIAL EYE
+            PROJECT ZENITH
           </span>
         </Link>
 

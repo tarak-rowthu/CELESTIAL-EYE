@@ -28,7 +28,7 @@ export default function AboutPage() {
           <Info className="w-5 h-5 text-secondary" />
           <span>System Specifications</span>
         </div>
-        <h2 className="text-3xl font-extrabold tracking-tight text-white">About Celestial Eye</h2>
+        <h2 className="text-3xl font-extrabold tracking-tight text-white">About PROJECT ZENITH</h2>
         <p className="text-xs text-zinc-400 font-medium leading-relaxed">
           Technical specifications, dependency stacks, and open data API systems powering the real-time celestial tracker.
         </p>

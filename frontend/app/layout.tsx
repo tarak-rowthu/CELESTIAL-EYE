@@ -7,13 +7,13 @@ import AppInitializer from '@/components/layout/AppInitializer';
 import Providers from '@/components/layout/Providers';
 
 export const metadata: Metadata = {
-  title: 'Celestial Eye - Real-Time Cosmic Radar & Space Predictor',
+  title: 'PROJECT ZENITH - Real-Time Cosmic Radar & Space Predictor',
   description:
     'Track the ISS and active satellites, scan visible stars and constellations above your horizon, check current weather conditions, and get accurate astronomical predictions.',
   keywords: ['satellite tracker', 'ISS tracker', 'constellation map', 'stargazing predictor', 'astronomy', 'space radar'],
-  authors: [{ name: 'Celestial Eye Team' }],
+  authors: [{ name: 'PROJECT ZENITH Team' }],
   openGraph: {
-    title: 'Celestial Eye - Real-Time Cosmic Radar',
+    title: 'PROJECT ZENITH - Real-Time Cosmic Radar',
     description: 'Track the ISS, satellites, stars, and planets in real-time with localized stargazing predictions.',
     type: 'website',
   },
@@ -58,7 +58,7 @@ export default function RootLayout({
               <footer className="border-t border-white/5 py-6 bg-zinc-950/40 backdrop-blur-sm relative z-10">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
                   <span className="text-zinc-500 text-xs">
-                    © 2026 The Celestial Eye. All telemetry computed in real time.
+                    © 2026 PROJECT ZENITH. All telemetry computed in real time.
                   </span>
                   <div className="flex gap-4 text-xs text-zinc-400">
                     <a href="#" className="hover:text-primary transition-colors">Telemetry API</a>

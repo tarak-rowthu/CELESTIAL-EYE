@@ -198,7 +198,7 @@ export default function ObjectDetails() {
           ) : selectedObjectError ? (
             <div className="flex-1 flex items-center justify-center p-4 rounded-xl bg-red-500/5 border border-red-500/10 text-center flex-col gap-3">
               <ShieldAlert className="w-10 h-10 text-red-500" />
-              <p className="text-sm text-zinc-400">Failed to capture object telemetries.</p>
+              <p className="text-sm text-zinc-400 whitespace-pre-wrap">Telemetry data is temporarily unavailable.{"\n"}Please try again later.</p>
             </div>
           ) : selectedObject ? (
             <div className="flex flex-col gap-6">
